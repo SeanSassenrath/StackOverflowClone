@@ -1,1 +1,9 @@
-<h1>THIS IS A TEST</h1>
+<div id="question_list"></div>
+
+<script type="text/x-handlebars-template" id="question_list_template">
+  {{#each question}}
+    <h2>{{ title }}</h2>
+    <p>{{ content }}</p>
+    <p>{{ vote }}</p>
+  {{/each}}
+</script>

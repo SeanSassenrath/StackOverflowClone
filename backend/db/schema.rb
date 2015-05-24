@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524180601) do
+ActiveRecord::Schema.define(version: 20150524195755) do
 
   create_table "answers", force: true do |t|
     t.string   "title"
@@ -20,10 +20,12 @@ ActiveRecord::Schema.define(version: 20150524180601) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "vote",        default: 0
   end
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id"
   add_index "answers", ["user_id"], name: "index_answers_on_user_id"
+  add_index "answers", ["vote"], name: "index_answers_on_vote"
 
   create_table "questions", force: true do |t|
     t.string   "title"
@@ -31,9 +33,11 @@ ActiveRecord::Schema.define(version: 20150524180601) do
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "vote",       default: 0
   end
 
   add_index "questions", ["user_id"], name: "index_questions_on_user_id"
+  add_index "questions", ["vote"], name: "index_questions_on_vote"
 
   create_table "users", force: true do |t|
     t.string   "username"
